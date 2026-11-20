@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}El Rincón Cubano{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="{% url 'landing' %}" class="logo">
+            <span class="logo-mark">🍽️</span>
+            <span class="logo-text">El Rincón <em>Cubano</em></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="{% url 'landing' %}#inicio">Inicio</a></li>
+            <li><a href="{% url 'landing' %}#menu">Menú</a></li>
+            <li><a href="{% url 'landing' %}#galeria">Galería</a></li>
+            <li><a href="{% url 'mis_reservas' %}">Mis Reservas</a></li>
+            <li><a href="{% url 'crear_reserva' %}" class="btn-reservar-nav">Reservar</a></li>
+        </ul>
+    </div>
+</nav>
+
+{% if messages %}
+<div class="messages-container">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% block content %}{% endblock %}
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h4>🍽️ El Rincón Cubano</h4>
+            <p>Auténtica cocina cubana en el corazón del Vedado. Sabor, tradición y hospitalidad desde 1998.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Contacto</h4>
+            <p>📍 Calle 23 #456, Vedado, La Habana</p>
+            <p>📞 +53 5555 5555</p>
+            <p>✉️ reservas@elrinconcubano.com</p>
+        </div>
+        <div class="footer-col">
+            <h4>Horarios</h4>
+            <p>Lunes a Domingo</p>
+            <p>Almuerzo: 12:00 - 15:00</p>
+            <p>Cena: 18:00 - 22:00</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 El Rincón Cubano. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+</body>
+</html>

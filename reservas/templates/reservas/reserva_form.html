@@ -1,0 +1,101 @@
+{% extends 'reservas/base.html' %}
+
+{% block title %}Reservar Mesa — El Rincón Cubano{% endblock %}
+
+{% block content %}
+<section class="form-section">
+    <div class="container form-container">
+
+        <div class="form-header">
+            <span class="section-label">Reserva tu mesa</span>
+            <h1 class="section-title">Estás a un paso de una experiencia inolvidable</h1>
+            <p class="section-desc">
+                Elige cómo quieres confirmar tu reserva: por WhatsApp o por correo.
+            </p>
+        </div>
+
+        <form method="post" class="reserva-form" novalidate>
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+            <div class="form-errors">{{ form.non_field_errors }}</div>
+            {% endif %}
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="{{ form.nombre.id_for_label }}">Nombre completo *</label>
+                    {{ form.nombre }}
+                    {% if form.nombre.errors %}<span class="error">{{ form.nombre.errors.0 }}</span>{% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.telefono.id_for_label }}">Teléfono *</label>
+                    {{ form.telefono }}
+                    {% if form.telefono.errors %}<span class="error">{{ form.telefono.errors.0 }}</span>{% endif %}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">Correo electrónico *</label>
+                {{ form.email }}
+                {% if form.email.errors %}<span class="error">{{ form.email.errors.0 }}</span>{% endif %}
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="{{ form.fecha.id_for_label }}">Fecha *</label>
+                    {{ form.fecha }}
+                    {% if form.fecha.errors %}<span class="error">{{ form.fecha.errors.0 }}</span>{% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.hora.id_for_label }}">Hora *</label>
+                    {{ form.hora }}
+                    {% if form.hora.errors %}<span class="error">{{ form.hora.errors.0 }}</span>{% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.personas.id_for_label }}">Nº de personas *</label>
+                    {{ form.personas }}
+                    {% if form.personas.errors %}<span class="error">{{ form.personas.errors.0 }}</span>{% endif %}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.comentarios.id_for_label }}">Comentarios</label>
+                {{ form.comentarios }}
+                {% if form.comentarios.errors %}<span class="error">{{ form.comentarios.errors.0 }}</span>{% endif %}
+            </div>
+
+            <div class="metodo-contacto-group">
+                <label class="metodo-label">¿Cómo quieres confirmar tu reserva? *</label>
+                <div class="metodo-grid">
+                    {% for radio in form.metodo_contacto %}
+                    <label class="metodo-option">
+                        {{ radio.tag }}
+                        <div class="metodo-content">
+                            {% if radio.choice_label == 'WhatsApp' %}
+                                <span class="metodo-icon">💬</span>
+                                <strong>WhatsApp</strong>
+                                <small>Confirmación inmediata</small>
+                            {% else %}
+                                <span class="metodo-icon">✉️</span>
+                                <strong>Correo electrónico</strong>
+                                <small>Te escribimos en minutos</small>
+                            {% endif %}
+                        </div>
+                    </label>
+                    {% endfor %}
+                </div>
+                {% if form.metodo_contacto.errors %}<span class="error">{{ form.metodo_contacto.errors.0 }}</span>{% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                🍽️ Solicitar Reserva
+            </button>
+
+            <p class="form-footnote">
+                Al reservar aceptas nuestra política de reservas. La confirmación
+                se realiza en horario de atención.
+            </p>
+        </form>
+    </div>
+</section>
+{% endblock %}

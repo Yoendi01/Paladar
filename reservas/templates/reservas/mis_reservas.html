@@ -1,0 +1,51 @@
+{% extends 'reservas/base.html' %}
+
+{% block title %}Mis Reservas — El Rincón Cubano{% endblock %}
+
+{% block content %}
+<section class="mis-reservas-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Consulta</span>
+            <h1 class="section-title">Mis Reservas</h1>
+            <p class="section-desc">
+                Ingresa tu correo o teléfono para ver tus reservas.
+            </p>
+        </div>
+
+        <form method="post" class="busqueda-form">
+            {% csrf_token %}
+            <input type="text" name="busqueda" value="{{ busqueda }}"
+                   placeholder="tu@correo.com o +53 5555 5555" class="form-input">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+
+        {% if reservas %}
+        <div class="reservas-lista">
+            {% for r in reservas %}
+            <div class="reserva-item">
+                <div class="reserva-item-fecha">
+                    <span class="mes">{{ r.fecha|date:"M" }}</span>
+                    <span class="dia">{{ r.fecha|date:"d" }}</span>
+                </div>
+                <div class="reserva-item-info">
+                    <h3>{{ r.nombre }} — {{ r.personas }} personas</h3>
+                    <p>🕐 {{ r.hora }} · 📧 {{ r.email }}</p>
+                    {% if r.comentarios %}<p class="coment">📝 {{ r.comentarios }}</p>{% endif %}
+                </div>
+                <div class="reserva-item-status">
+                    {% if r.confirmada %}
+                        <span class="badge badge-confirmada">✅ Confirmada</span>
+                    {% else %}
+                        <span class="badge badge-pendiente">⏳ Pendiente</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% elif busqueda %}
+        <p class="no-reservas">No encontramos reservas con ese dato. Intenta con otro correo o teléfono.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,199 @@
+{% extends 'reservas/base.html' %}
+{% load static %}
+
+{% block title %}El Rincón Cubano — Cocina Cubana Auténtica{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section id="inicio" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <span class="hero-badge">★ Desde 1998 ★</span>
+        <h1 class="hero-title">
+            El auténtico sabor<br>
+            <em>de Cuba</em>
+        </h1>
+        <p class="hero-subtitle">
+            Ropa vieja, lechón asado, tostones y mojitos en un ambiente lleno de historia.
+            Reserva tu mesa y vive una experiencia inolvidable.
+        </p>
+        <div class="hero-buttons">
+            <a href="{% url 'crear_reserva' %}" class="btn btn-primary btn-lg">Reservar Mesa</a>
+            <a href="#menu" class="btn btn-ghost btn-lg">Ver Menú</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <strong>25+</strong>
+                <span>Años de tradición</span>
+            </div>
+            <div class="stat">
+                <strong>4.9★</strong>
+                <span>Calificación</span>
+            </div>
+            <div class="stat">
+                <strong>100%</strong>
+                <span>Casero</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section class="about">
+    <div class="container about-grid">
+        <div class="about-text">
+            <span class="section-label">Sobre Nosotros</span>
+            <h2 class="section-title">Un pedacito de Cuba en cada plato</h2>
+            <p>
+                En <strong>El Rincón Cubano</strong> cocinamos como lo hacían nuestras abuelas:
+                con leña, paciencia y mucho amor. Cada receta cuenta una historia, cada plato
+                es un homenaje a la tradición culinaria cubana.
+            </p>
+            <p>
+                Nuestro chef, con más de 30 años de experiencia, selecciona a mano los
+                ingredientes más frescos del mercado para ofrecerte una experiencia única.
+            </p>
+            <div class="about-features">
+                <div class="feature">
+                    <span class="feature-icon">🌿</span>
+                    <div>
+                        <strong>Ingredientes frescos</strong>
+                        <p>Del mercado a tu mesa</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">👨‍🍳</span>
+                    <div>
+                        <strong>Chef premiado</strong>
+                        <p>30 años de experiencia</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🍹</span>
+                    <div>
+                        <strong>Coctelería cubana</strong>
+                        <p>Mojitos y daiquiris</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="about-visual">
+            <div class="visual-card card-1"></div>
+            <div class="visual-card card-2"></div>
+            <div class="visual-card card-3"></div>
+        </div>
+    </div>
+</section>
+
+<!-- MENÚ -->
+<section id="menu" class="menu-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Nuestro Menú</span>
+            <h2 class="section-title">Platos que enamoran</h2>
+            <p class="section-desc">Una selección de nuestros platos más aclamados, preparados con recetas de familia.</p>
+        </div>
+
+        <div class="menu-grid">
+            <article class="menu-card">
+                <div class="menu-card-image">
+                    <!-- <span>🥘</span> -->
+                    <img src="{% static 'img/image1.jpeg' %}" alt="Image">
+                </div>
+                <div class="menu-card-body">
+                    <h3>Ropa Vieja</h3>
+                    <p>Carne de res desmenuzada en salsa criolla con arroz blanco y plátano maduro.</p>
+                    <span class="precio">$18.50</span>
+                </div>
+            </article>
+
+            <article class="menu-card">
+                <div class="menu-card-image" style="background: linear-gradient(135deg, #059669, #047857);">
+                    <span>🐖</span>
+                </div>
+                <div class="menu-card-body">
+                    <h3>Lechón Asado</h3>
+                    <p>Cerdo marinado en mojo criollo, asado lentamente hasta quedar crujiente.</p>
+                    <span class="precio">$22.00</span>
+                </div>
+            </article>
+
+            <article class="menu-card">
+                <div class="menu-card-image" style="background: linear-gradient(135deg, #dc2626, #991b1b);">
+                    <span>🍤</span>
+                </div>
+                <div class="menu-card-body">
+                    <h3>Enchilado de Camarones</h3>
+                    <p>Camarones frescos en salsa de tomate criolla con especias cubanas.</p>
+                    <span class="precio">$24.00</span>
+                </div>
+            </article>
+
+            <article class="menu-card">
+                <div class="menu-card-image" style="background: linear-gradient(135deg, #7c3aed, #6d28d9);">
+                    <span>🍌</span>
+                </div>
+                <div class="menu-card-body">
+                    <h3>Tostones con Mojo</h3>
+                    <p>Plátano verde frito, crujiente por fuera y tierno por dentro, con mojo de ajo.</p>
+                    <span class="precio">$8.00</span>
+                </div>
+            </article>
+
+            <article class="menu-card">
+                <div class="menu-card-image" style="background: linear-gradient(135deg, #0284c7, #0369a1);">
+                    <span>🍹</span>
+                </div>
+                <div class="menu-card-body">
+                    <h3>Mojito Cubano</h3>
+                    <p>Ron blanco, hierbabuena fresca, lima, azúcar y agua con gas. El clásico.</p>
+                    <span class="precio">$9.00</span>
+                </div>
+            </article>
+
+            <article class="menu-card">
+                <div class="menu-card-image" style="background: linear-gradient(135deg, #ea580c, #c2410c);">
+                    <span>🍮</span>
+                </div>
+                <div class="menu-card-body">
+                    <h3>Flan de Coco</h3>
+                    <p>Postre tradicional cubano con caramelo y coco rallado fresco.</p>
+                    <span class="precio">$7.50</span>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- GALERÍA / EXPERIENCIA -->
+<section id="galeria" class="galeria">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">La Experiencia</span>
+            <h2 class="section-title">Más que una comida</h2>
+        </div>
+        <div class="galeria-grid">
+            <div class="galeria-item g1"><span>🎵</span><p>Música en vivo</p></div>
+            <div class="galeria-item g2"><span>🌴</span><p>Terraza tropical</p></div>
+            <div class="galeria-item g3"><span>🍷</span><p>Cata de vinos</p></div>
+            <div class="galeria-item g4"><span>🎉</span><p>Eventos privados</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA RESERVA -->
+<section class="cta-reserva">
+    <div class="container cta-content">
+        <h2>¿Listo para vivir la experiencia?</h2>
+        <p>Reserva tu mesa ahora y asegura tu lugar en El Rincón Cubano.</p>
+        <div class="cta-buttons">
+            <a href="{% url 'crear_reserva' %}" class="btn btn-primary btn-lg">
+                🍽️ Reservar por WhatsApp o Email
+            </a>
+        </div>
+        <p class="cta-nota">Confirmación inmediata · Sin cargos por reserva</p>
+    </div>
+</section>
+
+{% endblock %}
